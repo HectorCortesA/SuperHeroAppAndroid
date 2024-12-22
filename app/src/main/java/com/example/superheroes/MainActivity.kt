@@ -1,5 +1,6 @@
 package com.example.superheroes
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -10,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.superheroes.DetailSuperheroActivity.Companion.EXTRA_ID
 import com.example.superheroes.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 //Esta funcion es cuando vayamos escribiendo
             }
         })
-        adapter = SuperheroAdapter()
+        adapter = SuperheroAdapter{navigateToDetail(it)} //Envia el bloque de navigate
         binding.rvSuperhero.setHasFixedSize(true)
         binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
         binding.rvSuperhero.adapter = adapter
@@ -84,6 +86,12 @@ class MainActivity : AppCompatActivity() {
             .baseUrl("https://superheroapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    private fun navigateToDetail(id:String){
+        val intent = Intent(this, DetailSuperheroActivity::class.java)
+        intent.putExtra(EXTRA_ID,id) //Clave y una id , hay crear una constante en la clave, Se importo la constante de DetailSupeheroActivity
+        startActivity(intent)
     }
 }
 

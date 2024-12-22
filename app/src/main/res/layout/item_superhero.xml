@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="149dp"
-    android:orientation="horizontal">
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:cardBackgroundColor="@color/cardview_dark_background"
+    app:cardCornerRadius="22dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardElevation="8dp"
+    >
+    <!-- Separacion del card -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <ImageView
+            android:id="@+id/ivSuperHero"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            />
+<!--  scaletys-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:background="@color/superhero_item_name">
 
     <TextView
         android:id="@+id/tvSuperName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        tools:text="Subs"
         tools:ignore="MissingConstraints" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+    </FrameLayout>
+</androidx.cardview.widget.CardView>
